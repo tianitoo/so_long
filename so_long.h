@@ -10,6 +10,8 @@ void check_vertical_wall(char *wall);
 void check_horzontal_wall(char *wall);
 char **clone_map(char **map, int y);
 int P_reach(char **path, int i, int j, int previously_changed);
+void check_collectables(char **path, int lines);
 void check_path(char **path, int y);
+void reach_collectible_exit(char **path, int i, int j);
 
 #endif

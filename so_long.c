@@ -28,7 +28,9 @@ void check_line(char *line)
 {
     while (*line)
     {
-        if (*line != '1' && *line != '0' && *line != 'P' && *line != 'C' && *line != 'E' && *line != '\n')
+        if (*line != '1' && *line != '0' 
+            && *line != 'P' && *line != 'C' 
+                && *line != 'E' && *line != '\n')
         {
             printf("problem in horiwontal line\n");
             exit(0);
@@ -44,16 +46,13 @@ char **add_line_map(char **map, char *line, int y)
 
     i = 0;
     tmp_map = (char **) malloc (sizeof(char*) * y);
-    // check_horzontal_wall(map[i]);
     while (i < y - 1)
     {
-    // ft_printf("%s\n", line);
         check_vertical_wall(map[i]);
         check_line(map[i]);
         tmp_map [i] = map[i];
         i++;
     }
-    // check_horzontal_wall(map[i]);
     tmp_map[i] = line;
     free(map);
     return (tmp_map);

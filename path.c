@@ -50,3 +50,39 @@ int P_reach(char **path, int i, int j, int previously_changed)
     }
     return (changed);
 }
+
+void check_collectables(char **path, int lines)
+{
+    int i;
+    size_t j;
+
+    i = 0;
+    while (i < lines)
+    {
+        j = 0;
+        while (j < ft_strlen(path[i]) - 2)
+        {
+            reach_collectible_exit(path, i, j);
+            j++;
+        }
+        i++;
+    }
+}
+
+void reach_collectible_exit(char **path, int i, int j)
+{
+    if (path[i][j] == 'C')
+    {
+        ft_printf("can't reach collectable.\n");
+        exit(0);
+    }
+    if (path[i][j] == 'E')
+    {
+        if (path[i - 1][j] != 'P' && path[i + 1][j] != 'P' 
+            && path[i][j - 1] != 'P' && path[i][j + 1] != 'P')
+        {
+            ft_printf("can't reach exit\n");
+            exit(0);
+        }
+    }
+}

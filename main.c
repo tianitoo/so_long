@@ -27,7 +27,7 @@ int main()
 
     x = 0;
     y = 0;
-    fd = open("map.beq", O_RDONLY);
+    fd = open("map.ber", O_RDONLY);
     while (1)
     {
 
@@ -50,6 +50,7 @@ int main()
     check_horzontal_wall(map[y - 1]);
     path = clone_map(map, y);
     check_path(path, y);
+    check_collectables(path, y);
     while (i < y)
     {
         ft_printf("%s", path[i]);
