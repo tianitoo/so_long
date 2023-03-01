@@ -1,14 +1,4 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: hnait <hnait@student.42.fr>                +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/10/31 16:24:47 by hnait             #+#    #+#              #
-#    Updated: 2023/02/27 03:32:33 by hnait            ###   ########.fr        #
-#                                                                              #
-# *************************libftprintf*************************************************** #
+
 
 NAME = so_long
 CC = cc -Wall -Wextra -Werror
@@ -26,17 +16,18 @@ HEADPRINTF = ./ft_printf/ft_printf.h
 SRC = main.c\
 		so_long.c\
 		gnl/get_next_line.c\
-		gnl/get_next_line_utils.c
+		gnl/get_next_line_utils.c\
+		path.c
 
 
 OBJ = $(SRC:.c=.o)
 
-all: $(LIBFT) $(PRINTF) $(NAME)
+all: libft ft_printf $(NAME)
 
-$(LIBFT):
+libft:
 	$(MK) -C ./libft
 
-$(PRINTF):
+ft_printf:
 	$(MK) -C ./ft_printf
 
 $(NAME): $(OBJ)
