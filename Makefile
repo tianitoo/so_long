@@ -24,11 +24,12 @@ HEADPRINTF = ./ft_printf/ft_printf.h
 
 
 SRC = main.c\
-		gnl/get_next_line.c
-		gnl/get_next_line_util.c
+		so_long.c\
+		gnl/get_next_line.c\
+		gnl/get_next_line_utils.c
 
 
-OBJ = $(SRC:.c=.o)-la
+OBJ = $(SRC:.c=.o)
 
 all: $(LIBFT) $(PRINTF) $(NAME)
 
@@ -39,13 +40,13 @@ $(PRINTF):
 	$(MK) -C ./ft_printf
 
 $(NAME): $(OBJ)
-	$(CC)  $(LIBFT) $(PRINTF) $^ -o $@
+	$(CC) $^ $(LIBFT) $(PRINTF) -o $@
 
 %.o : %.c $(HEAD)
 		$(CC) -c $< -o $@ $(FLAGS)
 
 clean:
-		$(RM) $(OBJ) $(BNSOBJ)
+		$(RM) $(OBJ)
 		$(MK) clean -C libft
 		$(MK) clean -C ft_printf
 
@@ -53,7 +54,6 @@ fclean: clean
 	$(RM) $(NAME)
 	$(RM) $(LIBFT)
 	$(RM) $(PRINTF)
-	$(RM) $(SOLONG)
 	
 
 re: fclean all
