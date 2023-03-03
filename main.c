@@ -15,7 +15,7 @@ char **clone_map(char **map, int y)
     return (clone);
 }
 
-int main()
+int main(int argc, char **argv)
 {
     int fd;
     char *line;
@@ -25,10 +25,16 @@ int main()
     int y;
     int i = 0;
 
+    if (argc != 2)
+    {
+        printf("you need to provide a map file\n");
+        exit(0);
+    }
+    
     x = 0;
     y = 0;
     map = NULL;
-    fd = open("map.ber", O_RDONLY);
+    fd = open(argv[1], O_RDONLY);
     while (1)
     {
 

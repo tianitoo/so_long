@@ -14,6 +14,7 @@ typedef struct	s_vars {
 	char	*dst;
 	char	*background;
 	char	*wall;
+	char	*exit;
 	char	*goku;
 	char	*dragon_ball;
 	int		bits_per_pixel;
@@ -24,6 +25,11 @@ typedef struct	s_vars {
 	int		i;
 	int		j;
 	int		number_of_lines_map;
+	int		number_of_moves;
+	int		number_of_collectables;
+	int 	number_of_exits;
+	int		exit_i;
+	int		exit_j;
 }				t_vars;
 
 char **add_line_map(char **map, char *line, int y);
