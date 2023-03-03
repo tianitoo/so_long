@@ -6,13 +6,16 @@
 # include "gnl/get_next_line.h"
 
 typedef struct	s_vars {
+	char	**map;
 	void	*mlx;
 	void	*win;
 	void	*img;
-	void	*dragon_ball;
 	char	*addr;
 	char	*dst;
-	char	*relative_path;
+	char	*background;
+	char	*wall;
+	char	*goku;
+	char	*dragon_ball;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
@@ -20,6 +23,7 @@ typedef struct	s_vars {
 	int		img_height;
 	int		i;
 	int		j;
+	int		number_of_lines_map;
 }				t_vars;
 
 char **add_line_map(char **map, char *line, int y);
