@@ -27,6 +27,7 @@ int main()
 
     x = 0;
     y = 0;
+    map = NULL;
     fd = open("map.ber", O_RDONLY);
     while (1)
     {
@@ -56,5 +57,6 @@ int main()
         ft_printf("%s", path[i]);
         i++;
     }
+    init_window(map, y);
     
 }
