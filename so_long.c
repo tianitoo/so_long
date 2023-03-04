@@ -7,7 +7,7 @@ void check_horzontal_wall(char *wall)
     {
         if (*wall != '1' && *wall != '\n')
         {
-            printf("problem in horiwontal wall\n");
+            printf("problem in horizontal wall\n");
             exit(0);
         }
         wall++;
@@ -16,7 +16,7 @@ void check_horzontal_wall(char *wall)
 
 void check_vertical_wall(char *wall)
 {
-    if (wall[0] != '1' || wall[ft_strlen(wall) - 2] != '1')
+    if (wall[0] != '1' || wall[ft_strlen(wall) - 1] != '1')
     {
         printf("problem in vertical line\n");
         exit(0);

@@ -37,6 +37,7 @@ int	close_window(int keycode, t_vars *vars)
         }
         if (vars->i == vars->exit_i && vars->j == vars->exit_j)
         {
+            printf("YOU HAVE WON.\n");
             mlx_destroy_window(vars->mlx, vars->win);
             exit(1);
         }
@@ -44,12 +45,20 @@ int	close_window(int keycode, t_vars *vars)
     else if (keycode == 65307)
     {
         mlx_destroy_window(vars->mlx, vars->win);
-        exit(1);
+        exit(0);
     }
-    else
-    {
-        return (0);
-    }
+    return (0);
+}
+
+int mous_hook(int keycode, t_vars *vars)
+{
+    int x;
+    int y;
+
+    keycode = 0;
+    keycode++;
+    mlx_mouse_get_pos(vars->mlx, vars->win, &x, &y);
+    ft_printf("x : %d, y : %d\n", x, y);
     return (0);
 }
 
@@ -65,15 +74,15 @@ void init_window(char **map, int y)
     int i;
     int j;
     
-    x = ft_strlen(map[0]) - 1;
+    x = ft_strlen(map[0]);
     vars.map = map;
     vars.number_of_lines_map = y;
     vars.number_of_moves = 0;
     vars.number_of_collectables = 0;
     vars.number_of_exits = 0;
-    vars.i = 0;
-    vars.j = 0;
-    exits = "exit.xpm";
+    vars.i = -1;
+    vars.j = -1;
+    exits = "./exit.xpm";
     background = "./background.xpm";
     wall = "./wall.xpm";
     goku = "./goku_right.xpm";
@@ -88,7 +97,6 @@ void init_window(char **map, int y)
     vars.dragon_ball = mlx_xpm_file_to_image(vars.mlx, dragon_ball, &vars.img_width, &vars.img_height);
     vars.addr = mlx_get_data_addr(vars.img, &vars.bits_per_pixel, &vars.line_length,
 								&vars.endian);
-    x = ft_strlen(vars.map[0]) - 1;
     i = 0;
     while (i < vars.number_of_lines_map)
     {
@@ -122,6 +130,12 @@ void init_window(char **map, int y)
         }
         i++;
     }
+    if (vars.i < 0 || vars.j < 0)
+    {
+        printf("there is no player.\n");
+        exit(0);
+    }
+    
     if (vars.number_of_collectables == 0)
     {
         printf("there is no collectables\n");
@@ -135,8 +149,8 @@ void init_window(char **map, int y)
             printf("there is many exits\n");
         exit(0);
     }
-    
     mlx_put_image_to_window(vars.mlx, vars.win, vars.goku, vars.j * 64, vars.i * 64);
     mlx_key_hook(vars.win, close_window, &vars);
+    // mlx_mouse_hook(vars.win, mous_hook, &vars);
 	mlx_loop(vars.mlx);
 }

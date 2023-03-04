@@ -30,6 +30,11 @@ int main(int argc, char **argv)
         printf("you need to provide a map file\n");
         exit(0);
     }
+    if (ft_strncmp(ft_strrchr(argv[1], '.'), ".ber", 4) != 0)
+    {
+        printf("you should provide a '.ber' file\n");
+        exit(0);
+    }
     
     x = 0;
     y = 0;
@@ -37,8 +42,7 @@ int main(int argc, char **argv)
     fd = open(argv[1], O_RDONLY);
     while (1)
     {
-
-        line = get_next_line(fd);
+        line = ft_strtrim(get_next_line(fd),"\n");
         if (!line)
             break;
         if (x == 0)
@@ -64,5 +68,4 @@ int main(int argc, char **argv)
         i++;
     }
     init_window(map, y);
-    
 }

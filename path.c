@@ -5,8 +5,10 @@ void check_path(char **path, int y)
     int i;
     size_t j;
     int changed;
+    int player_exist;
 
     changed = 0;
+    player_exist = 0;
     i = 0;
     while (i < y)
     {
@@ -14,11 +16,20 @@ void check_path(char **path, int y)
         while (j < ft_strlen(path[i]) - 2)
         {
             if (path[i][j] == 'P')
-                changed = P_reach(path, i, j, changed);
+                {
+                    changed = P_reach(path, i, j, changed);
+                    player_exist = 1;
+                }
             j++;
         }
         i++;
     }
+    if (player_exist == 0)
+    {
+        ft_printf("player does not exist.\n");
+        exit(0);
+    }
+    
     if (changed == 1)
         check_path(path, y);
 }
