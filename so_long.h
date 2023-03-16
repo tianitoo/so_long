@@ -6,7 +6,7 @@
 /*   By: hnait <hnait@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 09:00:49 by hnait             #+#    #+#             */
-/*   Updated: 2023/03/16 09:03:13 by hnait            ###   ########.fr       */
+/*   Updated: 2023/03/16 18:16:53 by hnait            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ typedef struct s_vars {
 	int		number_of_exits;
 	int		exit_i;
 	int		exit_j;
+	size_t	x;
+	int		y;
 }				t_vars;
 
 char	**add_line_map(char **map, char *line, int y);
@@ -53,7 +55,7 @@ int		p_reach(char **path, int i, int j, int previously_changed);
 void	check_collectables(char **path, int lines);
 void	check_path(char **path, int y);
 void	reach_collectible_exit(char **path, int i, int j);
-void	init_window(char **map, int y);
+void	init_window(t_vars vars);
 int		close_window(int keycode, t_vars *vars);
 
 #endif

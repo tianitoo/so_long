@@ -6,7 +6,7 @@
 /*   By: hnait <hnait@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 08:43:52 by hnait             #+#    #+#             */
-/*   Updated: 2023/03/16 08:48:49 by hnait            ###   ########.fr       */
+/*   Updated: 2023/03/16 23:21:01 by hnait            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,71 +38,81 @@ void	prompt_error(int nb, char *str)
 	exit(nb);
 }
 
+char	*get_line(int fd, int *the_end, int x)
+{
+	char	*line;
+	char	*gnline;
+
+	gnline = get_next_line(fd);
+	if (x != 0 && *the_end == 0 && gnline)
+	{
+		if (gnline[x] == '\0')
+			*the_end = 1;
+	}
+	else if (!gnline && *the_end != 1)
+		prompt_error(0, "map is not rectangle\n");
+	line = ft_strtrim(gnline, "\n");
+	free(gnline);
+	return (line);
+}
+
+void	check_map_lines(t_vars *vars, char *line)
+{
+	if (vars->x == 0)
+	{
+		vars->x = ft_strlen(line);
+		if (vars->x > 256)
+			prompt_error(0, "too many line in map");
+		if (vars->x == 0)
+			prompt_error(0, "map is empty");
+		check_horzontal_wall(line);
+	}
+}
+
+void	check_map(t_vars *vars, int fd)
+{
+	int		the_end;
+	char	*line;
+
+	the_end = 0;
+	while (1)
+	{
+		line = get_line(fd, &the_end, vars->x);
+		if (!line)
+			break ;
+		check_map_lines(vars, line);
+		if (ft_strlen(line) != vars->x)
+			prompt_error(0, "problem in line length");
+		vars->y++;
+		if (vars->y > 256)
+			prompt_error(0, "too many lines in line");
+		vars->map = add_line_map(vars->map, line, vars->y);
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	int		fd;
-	char	*line;
-	char	*gnline;
-	char	**map;
 	char	**path;
-	size_t	x;
-	int		y;
-	int		the_end;
+	t_vars	vars;
 
-	the_end = 0;
+	vars.x = 0;
+	vars.y = 0;
+	vars.map = NULL;
 	if (argc != 2)
-	{
 		prompt_error(0, "you need to provide a map file\n");
-	}
-	if (ft_strncmp(ft_strrchr(argv[1], '.'), ".ber\0", 5) != 0)
-	{
+	if (!ft_strrchr(argv[1], '.'))
 		prompt_error(0, "you should provide a '.ber' file\n");
-	}
-	x = 0;
-	y = 0;
-	map = NULL;
+	if (ft_strncmp(ft_strrchr(argv[1], '.'), ".ber\0", 5) != 0)
+		prompt_error(0, "you should provide a '.ber' file\n");
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
-	{
 		prompt_error(0, "map not found");
-	}
-	while (1)
-	{
-		gnline = get_next_line(fd);
-		if (x != 0 && the_end == 0 && gnline)
-		{
-			if (gnline[x] == '\0')
-			{
-				the_end = 1;
-			}
-		}
-		else if (!gnline && the_end != 1)
-		{
-			prompt_error(0, "map is not rectangle\n");
-		}
-		line = ft_strtrim(gnline, "\n");
-		free(gnline);
-		if (!line)
-			break ;
-		if (x == 0)
-		{
-			x = ft_strlen(line);
-			if (x == 0)
-			{
-				prompt_error(0, "map is empty");
-			}
-			check_horzontal_wall(line);
-		}
-		if (ft_strlen(line) != x)
-		{
-			prompt_error(0, "problem in line length\n");
-		}
-		y++;
-		map = add_line_map(map, line, y);
-	}
-	check_horzontal_wall(map[y - 1]);
-	path = clone_map(map, y);
-	check_path(path, y);
-	check_collectables(path, y);
-	init_window(map, y);
+	check_map(&vars, fd);
+	check_horzontal_wall(vars.map[vars.y - 1]);
+	path = clone_map(vars.map, vars.y);
+	check_path(path, vars.y);
+	check_collectables(path, vars.y);
+
+	init_window(vars);
 }
