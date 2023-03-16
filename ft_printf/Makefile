@@ -1,13 +1,13 @@
 # **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: hnait <hnait@student.42.fr>                +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/12 11:50:23 by hnait             #+#    #+#              #
-#    Updated: 2022/11/13 15:53:11 by hnait            ###   ########.fr        #
-#                                                                              #
+#																			  #
+#														 :::	  ::::::::	#
+#	Makefile										   :+:	  :+:	:+:	#
+#													 +:+ +:+		 +:+	  #
+#	By: hnait <hnait@student.42.fr>				+#+  +:+	   +#+		 #
+#												 +#+#+#+#+#+   +#+			#
+#	Created: 2022/11/12 11:50:23 by hnait 	   		   #+#	#+#			  #
+#	Updated: 2023/03/14 17:38:58 by hnait			###   ########.fr		#
+#																			  #
 # **************************************************************************** #
 
 NAME = ft_printf.a
@@ -15,7 +15,7 @@ CC = gcc
 FLAGS = -Wall -Werror -Wextra
 AR = ar rc
 RM = rm -f
-HEAD = libftprintf.h
+HEAD = ft_printf.h
 
 SRC = ft_printf.c\
 		ft_putchar.c\

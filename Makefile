@@ -13,33 +13,79 @@ PRINTF = ./ft_printf/ft_printf.a
 HEADPRINTF = ./ft_printf/ft_printf.h
 
 
-SRC = main.c\
-		so_long.c\
+SRC = so_long.c\
 		gnl/get_next_line.c\
 		gnl/get_next_line_utils.c\
 		path.c\
 		window.c
 
+LIBFTSRC = ./libft/ft_atoi.c\
+		./libft/ft_bzero.c\
+		./libft/ft_calloc.c\
+		./libft/ft_isalnum.c\
+		./libft/ft_isalpha.c\
+		./libft/ft_isprint.c\
+		./libft/ft_isdigit.c\
+		./libft/ft_isascii.c\
+		./libft/ft_itoa.c\
+		./libft/ft_memchr.c\
+		./libft/ft_memcpy.c\
+		./libft/ft_memset.c\
+		./libft/ft_memcmp.c\
+		./libft/ft_memmove.c\
+		./libft/ft_split.c\
+		./libft/ft_strlcat.c\
+		./libft/ft_strlen.c\
+		./libft/ft_strnstr.c\
+		./libft/ft_strrchr.c\
+		./libft/ft_strchr.c\
+		./libft/ft_strlcpy.c\
+		./libft/ft_strlcat.c\
+		./libft/ft_strdup.c\
+		./libft/ft_strncmp.c\
+		./libft/ft_strlcat.c\
+		./libft/ft_strtrim.c\
+		./libft/ft_substr.c\
+		./libft/ft_tolower.c\
+		./libft/ft_toupper.c\
+		./libft/ft_strmapi.c\
+		./libft/ft_striteri.c\
+		./libft/ft_strjoin.c\
+		./libft/ft_putchar_fd.c\
+		./libft/ft_putstr_fd.c\
+		./libft/ft_putendl_fd.c\
+		./libft/ft_putnbr_fd.c\
+		./libft/libft.h
+
+PRINTFSRC = ./ft_printf/ft_printf.c\
+		./ft_printf/ft_putchar.c\
+		./ft_printf/ft_puthex.c\
+		./ft_printf/ft_putnbr.c\
+		./ft_printf/ft_putstr.c\
+		./ft_printf/ft_putunsignednbr.c\
+		./ft_printf/ft_printf.h
+
 
 OBJ = $(SRC:.c=.o)
 
-all: libft ft_printf $(NAME)
+all: $(NAME)
 
-libft:
+$(LIBFT): $(LIBFTSRC)
 	$(MK) -C ./libft
 
-ft_printf:
+$(PRINTF): $(PRINTFSRC)
 	$(MK) -C ./ft_printf
 
-$(NAME): $(OBJ)
-	$(CC) $(OBJ) $(LIBFT) $(PRINTF) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+$(NAME): $(LIBFT) $(PRINTF) $(OBJ) main.c
+	$(CC) main.c $(LIBFT) $(PRINTF) -lmlx -framework OpenGL -framework AppKit $(OBJ) -o $(NAME)
 
 %.o : %.c $(HEAD)
-	$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
+	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
 clean:
 		$(RM) $(OBJ)
-		$(MK) clean -C libft
-		$(MK) clean -C ft_printf
+		$(RM) main.o
+		$(MK) clean -C ./libft
+		$(MK) clean -C ./ft_printf
 
 fclean: clean
 	$(RM) $(NAME)
@@ -49,4 +95,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all bonus clean fclean re libft ft_printf
+.PHONY: all bonus clean fclean re

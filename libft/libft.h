@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hnait <hnait@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/06 02:31:51 by hnait             #+#    #+#             */
-/*   Updated: 2022/10/24 11:05:25 by hnait            ###   ########.fr       */
-/*                                                                            */
+/*																			*/
+/*														:::	  ::::::::   */
+/*   libft.h											:+:	  :+:	:+:   */
+/*													+:+ +:+		 +:+	 */
+/*   By: hnait <hnait@student.42.fr>				+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+		   */
+/*   Created: 2022/10/06 02:31:51 by hnait 	   		   #+#	#+#			 */
+/*   Updated: 2023/03/14 17:38:58 by hnait			###   ########.fr	   */
+/*																			*/
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
@@ -32,6 +32,7 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
+void	free_ss(char **ss);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
 int		ft_atoi(const char *str);

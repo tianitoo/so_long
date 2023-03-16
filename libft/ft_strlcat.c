@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hnait <hnait@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 00:48:15 by hnait             #+#    #+#             */
-/*   Updated: 2022/10/25 11:38:14 by hnait            ###   ########.fr       */
-/*                                                                            */
+/*																			*/
+/*														:::	  ::::::::   */
+/*   ft_strlcat.c									   :+:	  :+:	:+:   */
+/*													+:+ +:+		 +:+	 */
+/*   By: hnait <hnait@student.42.fr>				+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+		   */
+/*   Created: 2022/10/10 00:48:15 by hnait 	   		   #+#	#+#			 */
+/*   Updated: 2023/03/14 17:38:58 by hnait			###   ########.fr	   */
+/*																			*/
 /* ************************************************************************** */
 
 #include "libft.h"
@@ -36,11 +36,3 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	dst[dstlen + i] = '\0';
 	return (dstlen + srclen);
 }
-
-// int main()
-// {
-
-// 	// printf ("return %lu|\n", strlcat("null", NULL, 0));
-// 	printf ("return %lu|\n", ft_strlcat("null", NULL, 0));
-
-// }

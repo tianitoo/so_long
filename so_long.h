@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hnait <hnait@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/16 09:00:49 by hnait             #+#    #+#             */
+/*   Updated: 2023/03/16 09:03:13 by hnait            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 # include <mlx.h>
@@ -5,7 +17,7 @@
 # include "libft/libft.h"
 # include "gnl/get_next_line.h"
 
-typedef struct	s_vars {
+typedef struct s_vars {
 	char	**map;
 	void	*mlx;
 	void	*win;
@@ -27,22 +39,21 @@ typedef struct	s_vars {
 	int		number_of_lines_map;
 	int		number_of_moves;
 	int		number_of_collectables;
-	int 	number_of_exits;
+	int		number_of_exits;
 	int		exit_i;
 	int		exit_j;
 }				t_vars;
 
-char **add_line_map(char **map, char *line, int y);
-void check_vertical_wall(char *wall);
-void check_horzontal_wall(char *wall);
-char **clone_map(char **map, int y);
-int P_reach(char **path, int i, int j, int previously_changed);
-void check_collectables(char **path, int lines);
-void check_path(char **path, int y);
-void reach_collectible_exit(char **path, int i, int j);
-void init_window(char **map, int y);
-
-int	close_window(int keycode, t_vars *vars);
-
+char	**add_line_map(char **map, char *line, int y);
+void	prompt_error(int nb, char *str);
+void	check_vertical_wall(char *wall);
+void	check_horzontal_wall(char *wall);
+char	**clone_map(char **map, int y);
+int		p_reach(char **path, int i, int j, int previously_changed);
+void	check_collectables(char **path, int lines);
+void	check_path(char **path, int y);
+void	reach_collectible_exit(char **path, int i, int j);
+void	init_window(char **map, int y);
+int		close_window(int keycode, t_vars *vars);
 
 #endif

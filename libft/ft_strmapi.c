@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hnait <hnait@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/21 19:36:50 by hnait             #+#    #+#             */
-/*   Updated: 2022/10/21 20:34:54 by hnait            ###   ########.fr       */
-/*                                                                            */
+/*																			*/
+/*														:::	  ::::::::   */
+/*   ft_strmapi.c									   :+:	  :+:	:+:   */
+/*													+:+ +:+		 +:+	 */
+/*   By: hnait <hnait@student.42.fr>				+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+		   */
+/*   Created: 2022/10/21 19:36:50 by hnait 	   		   #+#	#+#			 */
+/*   Updated: 2023/03/14 17:38:58 by hnait			###   ########.fr	   */
+/*																			*/
 /* ************************************************************************** */
 
 #include "libft.h"
@@ -31,15 +31,3 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	result_string[i] = 0;
 	return (result_string);
 }
-
-// char 	ft_test(unsigned int i, char c)
-// {
-// 	return (ft_toupper(c));
-// }
-
-// int main ()
-// {
-// 	char *ss = "hamza is here to stay";
-
-// 	printf("|%s|\n", ft_strmapi(ss, ft_test));
-// }

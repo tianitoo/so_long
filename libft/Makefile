@@ -59,7 +59,7 @@ $(NAME): $(OBJ)
 
 %.o: %.c $(HEAD)
 		$(CC) $(CFLAGS) -o $@ -c $<
-
+ 
 bonus: all $(BNSOBJ)
 		ar rc $(NAME) $(BNSOBJ)
 
