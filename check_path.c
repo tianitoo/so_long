@@ -6,7 +6,7 @@
 /*   By: hnait <hnait@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:00:41 by hnait             #+#    #+#             */
-/*   Updated: 2023/03/20 12:04:01 by hnait            ###   ########.fr       */
+/*   Updated: 2023/03/20 16:16:52 by hnait            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ void	check_collectables(char **path, int lines)
 void	reach_collectible_exit(char **path, int i, int j)
 {
 	if (path[i][j] == 'C')
-		prompt_error(0, "can't reach collectable.\n");
+		prompt_error(1, "can't reach collectable.");
 	if (path[i][j] == 'E')
 	{
 		if (path[i - 1][j] != 'P' && path[i + 1][j] != 'P'
 			&& path[i][j - 1] != 'P' && path[i][j + 1] != 'P')
-			prompt_error(0, "can't reach exit\n");
+			prompt_error(1, "can't reach exit");
 	}
 }
 

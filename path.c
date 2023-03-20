@@ -6,7 +6,7 @@
 /*   By: hnait <hnait@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 08:52:06 by hnait             #+#    #+#             */
-/*   Updated: 2023/03/20 12:01:51 by hnait            ###   ########.fr       */
+/*   Updated: 2023/03/20 16:16:13 by hnait            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	check_path(char **path, int y)
 	path_right_down(y, &player_exist, &changed, path);
 	path_left_up(y, &player_exist, &changed, path);
 	if (player_exist == 0)
-		prompt_error(0, "player does not exist.\n");
+		prompt_error(1, "player does not exist.");
 	if (changed == 1)
 		check_path(path, y);
 }

@@ -6,7 +6,7 @@
 /*   By: hnait <hnait@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:46:25 by hnait             #+#    #+#             */
-/*   Updated: 2023/03/20 11:58:07 by hnait            ###   ########.fr       */
+/*   Updated: 2023/03/20 16:17:22 by hnait            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 void	init_imgs(t_vars *vars)
 {
-	vars->exit = mlx_xpm_file_to_image(vars->mlx, "./exit.xpm",
+	vars->exit = mlx_xpm_file_to_image(vars->mlx, "./textures/exit.xpm",
 			&vars->img_width, &vars->img_height);
-	vars->wall = mlx_xpm_file_to_image(vars->mlx, "./wall.xpm",
+	vars->wall = mlx_xpm_file_to_image(vars->mlx, "./textures/wall.xpm",
 			&vars->img_width, &vars->img_height);
-	vars->goku = mlx_xpm_file_to_image(vars->mlx, "./goku_right.xpm",
+	vars->goku = mlx_xpm_file_to_image(vars->mlx, "./textures/goku_right.xpm",
 			&vars->img_width, &vars->img_height);
-	vars->background = mlx_xpm_file_to_image(vars->mlx, "./background.xpm",
+	vars->background = mlx_xpm_file_to_image(vars->mlx, "./textures/background.xpm",
 			&vars->img_width, &vars->img_height);
-	vars->dragon_ball = mlx_xpm_file_to_image(vars->mlx, "./dragon_ball.xpm",
+	vars->dragon_ball = mlx_xpm_file_to_image(vars->mlx, "./textures/dragon_ball.xpm",
 			&vars->img_width, &vars->img_height);
 	if (!vars->exit || !vars->wall || !vars->goku
 		|| !vars->background || !vars->dragon_ball)
-		prompt_error(0, "image does not exist");
+		prompt_error(1, "image does not exist");
 }
 
 void	create_map(int i, int j, t_vars *vars)
@@ -89,6 +89,7 @@ void	init_vars(t_vars *vars)
 void	prompt_error(int error, char *str)
 {
 	if (error == 1)
-		ft_printf("ERROR\n%s", str);
+		ft_printf("ERROR\n");
+	ft_printf("%s\n", str);
 	exit(error);
 }

@@ -6,7 +6,7 @@
 /*   By: hnait <hnait@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:26:11 by hnait             #+#    #+#             */
-/*   Updated: 2023/03/20 11:38:09 by hnait            ###   ########.fr       */
+/*   Updated: 2023/03/20 15:46:36 by hnait            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	put_img(t_vars *vars, char type)
 void	put_player(t_vars *vars, int i, int j)
 {
 	if (vars->i != -1 || vars->j != -1)
-		prompt_error(0, "too many players");
+		prompt_error(1, "too many players");
 	vars->i = i;
 	vars->j = j;
 }

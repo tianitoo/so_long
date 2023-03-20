@@ -6,7 +6,7 @@
 /*   By: hnait <hnait@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 09:04:30 by hnait             #+#    #+#             */
-/*   Updated: 2023/03/20 11:55:11 by hnait            ###   ########.fr       */
+/*   Updated: 2023/03/20 16:16:38 by hnait            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	close_window(int keycode, t_vars *vars)
 		if (vars->number_of_collectables == 0)
 			put_img(vars, 'E');
 		if (vars->i == vars->exit_i && vars->j == vars->exit_j)
-			game_done(0, vars, "YOU HAVE WON\n");
+			game_done(0, vars, "YOU HAVE WON");
 	}
 	else if (keycode == 53)
 		game_done(0, vars, "player hit exit");
@@ -75,14 +75,14 @@ int	close_window(int keycode, t_vars *vars)
 void	check_errors(t_vars *vars)
 {
 	if (vars->i < 0 || vars->j < 0)
-		prompt_error(0, "there is no player.\n");
+		prompt_error(1, "there is no player.");
 	if (vars->number_of_collectables == 0)
-		prompt_error(0, "there is no collectables\n");
+		prompt_error(1, "there is no collectables");
 	if (vars->number_of_exits != 1)
 	{
 		if (vars->number_of_exits == 0)
-			prompt_error(0, "there is no exit\n");
+			prompt_error(1, "there is no exit");
 		else
-			prompt_error(0, "too many exits\n");
+			prompt_error(1, "too many exits");
 	}
 }

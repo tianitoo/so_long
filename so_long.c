@@ -6,7 +6,7 @@
 /*   By: hnait <hnait@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 08:54:39 by hnait             #+#    #+#             */
-/*   Updated: 2023/03/16 09:00:09 by hnait            ###   ########.fr       */
+/*   Updated: 2023/03/20 16:16:18 by hnait            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	check_horzontal_wall(char *wall)
 	{
 		if (*wall != '1' && *wall != '\n')
 		{
-			prompt_error(0, "problem in horizontal wall\n");
+			prompt_error(1, "problem in horizontal wall");
 		}
 		wall++;
 	}
@@ -28,7 +28,7 @@ void	check_vertical_wall(char *wall)
 {
 	if (wall[0] != '1' || wall[ft_strlen(wall) - 1] != '1')
 	{
-		prompt_error(0, "problem in vertical line\n");
+		prompt_error(1, "problem in vertical line");
 	}
 }
 
@@ -40,7 +40,7 @@ void	check_line(char *line)
 			&& *line != 'P' && *line != 'C'
 			&& *line != 'E' && *line != '\n')
 		{
-			prompt_error(0, "problem in horiwontal line\n");
+			prompt_error(1, "problem in horizontal line");
 		}
 		line++;
 	}
