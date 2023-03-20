@@ -17,7 +17,10 @@ SRC = so_long.c\
 		gnl/get_next_line.c\
 		gnl/get_next_line_utils.c\
 		path.c\
-		window.c
+		window.c\
+		put_items.c\
+		init_map.c\
+		check_path.c
 
 LIBFTSRC = ./libft/ft_atoi.c\
 		./libft/ft_bzero.c\

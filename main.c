@@ -6,7 +6,7 @@
 /*   By: hnait <hnait@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 08:43:52 by hnait             #+#    #+#             */
-/*   Updated: 2023/03/16 23:21:01 by hnait            ###   ########.fr       */
+/*   Updated: 2023/03/20 11:57:03 by hnait            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,6 @@ char	**clone_map(char **map, int y)
 		i++;
 	}
 	return (clone);
-}
-
-// void f()
-// {
-// 	system("leaks so_long");
-// }
-
-void	prompt_error(int nb, char *str)
-{
-	ft_printf("ERROR\n%s", str);
-	exit(nb);
 }
 
 char	*get_line(int fd, int *the_end, int x)
@@ -113,6 +102,5 @@ int	main(int argc, char **argv)
 	path = clone_map(vars.map, vars.y);
 	check_path(path, vars.y);
 	check_collectables(path, vars.y);
-
 	init_window(vars);
 }

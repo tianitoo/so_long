@@ -6,7 +6,7 @@
 /*   By: hnait <hnait@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 09:00:49 by hnait             #+#    #+#             */
-/*   Updated: 2023/03/16 18:16:53 by hnait            ###   ########.fr       */
+/*   Updated: 2023/03/20 12:04:10 by hnait            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,24 @@ typedef struct s_vars {
 
 char	**add_line_map(char **map, char *line, int y);
 void	prompt_error(int nb, char *str);
+void	put_img(t_vars *vars, char type);
+void	put_player(t_vars *vars, int i, int j);
 void	check_vertical_wall(char *wall);
 void	check_horzontal_wall(char *wall);
+void	reach_collectible_exit(char **path, int i, int j);
+void	check_collectables(char **path, int lines);
 char	**clone_map(char **map, int y);
+int		in_player_reach(int i, int j, char **path, int *changed);
+void	check_errors(t_vars *vars);
 int		p_reach(char **path, int i, int j, int previously_changed);
 void	check_collectables(char **path, int lines);
+void	put_collectable(t_vars *vars, int i, int j);
+void	put_exit(t_vars *vars, int i, int j);
+void	init_imgs(t_vars *vars);
 void	check_path(char **path, int y);
 void	reach_collectible_exit(char **path, int i, int j);
 void	init_window(t_vars vars);
 int		close_window(int keycode, t_vars *vars);
+void	init_vars(t_vars *vars);
 
 #endif
