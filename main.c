@@ -6,7 +6,7 @@
 /*   By: hnait <hnait@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 08:43:52 by hnait             #+#    #+#             */
-/*   Updated: 2023/03/20 16:16:09 by hnait            ###   ########.fr       */
+/*   Updated: 2023/03/23 16:21:15 by hnait            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	check_map_lines(t_vars *vars, char *line)
 	{
 		vars->x = ft_strlen(line);
 		if (vars->x > 256)
-			prompt_error(1, "too many line in map");
+			prompt_error(1, "too many columns` in map");
 		if (vars->x == 0)
 			prompt_error(1, "map is empty");
 		check_horzontal_wall(line);
@@ -79,17 +79,12 @@ void	check_map(t_vars *vars, int fd)
 	}
 }
 
-void f()
-{
-	system("leaks so_long");
-}
-
 int	main(int argc, char **argv)
 {
 	int		fd;
 	char	**path;
 	t_vars	vars;
-	atexit(f);
+
 	vars.x = 0;
 	vars.y = 0;
 	vars.map = NULL;

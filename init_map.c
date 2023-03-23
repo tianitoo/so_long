@@ -6,7 +6,7 @@
 /*   By: hnait <hnait@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:46:25 by hnait             #+#    #+#             */
-/*   Updated: 2023/03/20 16:17:22 by hnait            ###   ########.fr       */
+/*   Updated: 2023/03/23 14:04:09 by hnait            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	init_window(t_vars vars)
 	mlx_put_image_to_window(vars.mlx, vars.win,
 		vars.goku, vars.j * 64, vars.i * 64);
 	mlx_key_hook(vars.win, close_window, &vars);
+	mlx_hook(vars.win, 17, 0, &cross_button, &vars);
 	mlx_loop(vars.mlx);
 }
 

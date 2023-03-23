@@ -6,7 +6,7 @@
 /*   By: hnait <hnait@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 09:00:49 by hnait             #+#    #+#             */
-/*   Updated: 2023/03/20 12:04:10 by hnait            ###   ########.fr       */
+/*   Updated: 2023/03/23 14:04:49 by hnait            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	check_collectables(char **path, int lines);
 void	put_collectable(t_vars *vars, int i, int j);
 void	put_exit(t_vars *vars, int i, int j);
 void	init_imgs(t_vars *vars);
+int		cross_button(t_vars *vars);
 void	check_path(char **path, int y);
 void	reach_collectible_exit(char **path, int i, int j);
 void	init_window(t_vars vars);

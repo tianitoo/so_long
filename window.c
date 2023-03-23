@@ -6,7 +6,7 @@
 /*   By: hnait <hnait@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 09:04:30 by hnait             #+#    #+#             */
-/*   Updated: 2023/03/20 16:16:38 by hnait            ###   ########.fr       */
+/*   Updated: 2023/03/23 14:04:39 by hnait            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,14 @@ void	game_done(int error, t_vars *vars, char *str)
 {
 	mlx_destroy_window(vars->mlx, vars->win);
 	prompt_error(error, str);
+}
+
+int	cross_button(t_vars *vars)
+{
+	
+	mlx_destroy_window(vars->mlx, vars->win);
+	prompt_error(0, "player hit exit");
+	return (0);
 }
 
 void	print_moves(int i, int j, t_vars *vars)
