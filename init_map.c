@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "./so_long.h"
 
 void	init_imgs(t_vars *vars)
 {
@@ -44,31 +44,31 @@ void	create_map(int i, int j, t_vars *vars)
 		put_exit(vars, i, j);
 }
 
-void	init_window(t_vars vars)
+void	init_window(t_vars *vars)
 {
 	int		x;
 	int		i;
 	int		j;
 
-	x = ft_strlen(vars.map[0]);
-	init_vars(&vars);
+	x = ft_strlen(vars->map[0]);
+	init_vars(vars);
 	i = 0;
-	while (i < vars.number_of_lines_map)
+	while (i < vars->number_of_lines_map)
 	{
 		j = 0;
 		while (j < x)
 		{
-			create_map(i, j, &vars);
+			create_map(i, j, vars);
 			j++;
 		}
 		i++;
 	}
-	check_errors(&vars);
-	mlx_put_image_to_window(vars.mlx, vars.win,
-		vars.goku, vars.j * 64, vars.i * 64);
-	mlx_key_hook(vars.win, close_window, &vars);
-	mlx_hook(vars.win, 17, 0, &cross_button, &vars);
-	mlx_loop(vars.mlx);
+	check_errors(vars);
+	mlx_put_image_to_window(vars->mlx, vars->win,
+		vars->goku, vars->j * 64, vars->i * 64);
+	mlx_key_hook(vars->win, close_window, vars);
+	mlx_hook(vars->win, 17, 0, &cross_button, vars);
+	mlx_loop(vars->mlx);
 }
 
 void	init_vars(t_vars *vars)
@@ -80,8 +80,14 @@ void	init_vars(t_vars *vars)
 	vars->i = -1;
 	vars->j = -1;
 	vars->mlx = mlx_init();
+	if (!vars->mlx)
+		prompt_error(1, "mlx does not exist");
+	ft_printf("x = %d\n", vars->x);
+	ft_printf("y = %d\n", vars->y);
+	ft_printf("p = %p\n", vars->mlx);
 	vars->win = mlx_new_window(vars->mlx, vars->x * 64,
 			vars->y * 64, "so long");
+	ft_printf("got here\n");
 	init_imgs(vars);
 	vars->addr = mlx_get_data_addr(vars->img, &vars->bits_per_pixel,
 			&vars->line_length, &vars->endian);

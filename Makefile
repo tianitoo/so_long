@@ -1,8 +1,8 @@
 
 
 NAME = so_long
-CC = cc -Wall -Wextra -Werror
-FLAGS = 
+CC = cc
+FLAGS = -Wall -Wextra -Werror
 AR = ar -r
 RM = rm -f
 HEAD = so_long.h
@@ -13,14 +13,15 @@ PRINTF = ./ft_printf/ft_printf.a
 HEADPRINTF = ./ft_printf/ft_printf.h
 
 
-SRC = so_long.c\
+SRC = main.c\
+		so_long.c\
 		gnl/get_next_line.c\
 		gnl/get_next_line_utils.c\
 		path.c\
 		window.c\
 		put_items.c\
 		init_map.c\
-		check_path.c
+		check_path.c\
 
 LIBFTSRC = ./libft/ft_atoi.c\
 		./libft/ft_bzero.c\
@@ -79,16 +80,16 @@ $(LIBFT): $(LIBFTSRC)
 $(PRINTF): $(PRINTFSRC)
 	$(MK) -C ./ft_printf
 
-$(NAME): $(LIBFT) $(PRINTF) $(OBJ) main.c
-	$(CC) main.c $(LIBFT) $(PRINTF) -lmlx -framework OpenGL -framework AppKit $(OBJ) -o $(NAME)
+$(NAME): $(LIBFT) $(PRINTF) $(OBJ)
+	$(CC) $(OBJ) $(LIBFT) $(PRINTF) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 %.o : %.c $(HEAD)
-	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
+	$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
 clean:
-		$(RM) $(OBJ)
-		$(RM) main.o
-		$(MK) clean -C ./libft
-		$(MK) clean -C ./ft_printf
+	$(RM) $(OBJ)
+	$(RM) main.o
+	$(MK) clean -C ./libft
+	$(MK) clean -C ./ft_printf
 
 fclean: clean
 	$(RM) $(NAME)

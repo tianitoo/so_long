@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "./so_long.h"
 
 void	check_collectables(char **path, int lines)
 {
@@ -44,9 +44,6 @@ void	reach_collectible_exit(char **path, int i, int j)
 
 int	in_player_reach(int i, int j, char **path, int *changed)
 {
-	int	player_exist;
-
-	player_exist = 0;
 	if (path[i][j] == 'P')
 	{
 		*changed = p_reach(path, i, j, *changed);

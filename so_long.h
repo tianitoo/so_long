@@ -13,9 +13,9 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 # include <mlx.h>
-# include "ft_printf/ft_printf.h"
-# include "libft/libft.h"
-# include "gnl/get_next_line.h"
+# include "./ft_printf/ft_printf.h"
+# include "./libft/libft.h"
+# include "./gnl/get_next_line.h"
 
 typedef struct s_vars {
 	char	**map;
@@ -65,7 +65,7 @@ void	init_imgs(t_vars *vars);
 int		cross_button(t_vars *vars);
 void	check_path(char **path, int y);
 void	reach_collectible_exit(char **path, int i, int j);
-void	init_window(t_vars vars);
+void	init_window(t_vars *vars);
 int		close_window(int keycode, t_vars *vars);
 void	init_vars(t_vars *vars);
 

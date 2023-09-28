@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "./so_long.h"
 
 void	put_img(t_vars *vars, char type)
 {
-	void	*p;
+	void	*p = NULL;
 
 	if (type == '0')
 		p = vars->background;

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "./so_long.h"
 
 char	**clone_map(char **map, int y)
 {
@@ -83,11 +83,12 @@ int	main(int argc, char **argv)
 {
 	int		fd;
 	char	**path;
-	t_vars	vars;
+	t_vars	*vars;
 
-	vars.x = 0;
-	vars.y = 0;
-	vars.map = NULL;
+	vars = (t_vars *)malloc(sizeof(t_vars));
+	vars->x = 0;
+	vars->y = 0;
+	vars->map = NULL;
 	if (argc != 2)
 		prompt_error(1, "you need to provide a map file");
 	if (!ft_strrchr(argv[1], '.'))
@@ -97,10 +98,10 @@ int	main(int argc, char **argv)
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 		prompt_error(1, "map not found");
-	check_map(&vars, fd);
-	check_horzontal_wall(vars.map[vars.y - 1]);
-	path = clone_map(vars.map, vars.y);
-	check_path(path, vars.y);
-	check_collectables(path, vars.y);
+	check_map(vars, fd);
+	check_horzontal_wall(vars->map[vars->y - 1]);
+	path = clone_map(vars->map, vars->y);
+	check_path(path, vars->y);
+	check_collectables(path, vars->y);
 	init_window(vars);
 }
